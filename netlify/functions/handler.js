@@ -16,6 +16,11 @@ exports.handler = async (event, context) => {
   const sanitizedProject = isStampRequest ? project.replace('-stamp', '') : project;
   const versionFilePath = path.join(baseVersionDir, `${sanitizedProject}.txt`);
   
+  console.log(`Base Version Directory: ${baseVersionDir}`);
+  console.log(`Sanitized Project: ${sanitizedProject}`);
+  console.log(`Version File Path: ${versionFilePath}`);
+
+
   try {
     const data = fs.readFileSync(versionFilePath, 'utf8');
     const version = data.trim();
@@ -23,7 +28,7 @@ exports.handler = async (event, context) => {
     if (isStampRequest) {
       const shieldIoJson = {
         schemaVersion: 1,
-        label: "NEPEMVERSE",
+        label: "NEPEMVERSER",
         message: version,
         color: "orange"
       };
