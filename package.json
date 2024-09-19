@@ -15,6 +15,7 @@
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "typescript": "^5.6.2"
   }
 }
