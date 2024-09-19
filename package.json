@@ -4,6 +4,7 @@
   "description": "Função serverless para disponibilização de versões e redirecionamentos de projetos NEPEM",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "keywords": [],

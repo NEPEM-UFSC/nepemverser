@@ -2,7 +2,12 @@ const admin = require('firebase-admin');
 
 
 if (!admin.apps.length) {
-    // const serviceAccount = require('../firebase_key.json');
+    /**
+     * Parses the Firebase API key from the environment variable and assigns it to the serviceAccount constant.
+     * The API key is expected to be in JSON format.
+     *
+     * @constant {Object} serviceAccount - The parsed Firebase API key.
+     */
     const serviceAccount = JSON.parse(process.env.FIREBASE_API_KEY);
 
     admin.initializeApp({
@@ -16,6 +21,16 @@ exports.handler = async (event, context) => {
   try {
     // Parsear o corpo da requisição (POST) ou usar queryStringParameters (GET)
     const body = event.body ? JSON.parse(event.body) : {};
+    /**
+     * Extracts the `project` property from the `body` object if it exists,
+     * otherwise extracts it from `event.queryStringParameters`.
+     *
+     * @param {Object} body - The body object containing the project data.
+     * @param {Object} event - The event object containing query string parameters.
+     * @param {Object} [body.project] - The project data within the body object.
+     * @param {Object} event.queryStringParameters - The query string parameters from the event.
+     * @returns {Object} project - The extracted project data.
+     */
     const { project } = body.project ? body : event.queryStringParameters;
     
     // Verificar se o projeto foi fornecido
@@ -80,4 +95,4 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ error: 'Internal server error' }),
     };
   }
-};
+}; 
