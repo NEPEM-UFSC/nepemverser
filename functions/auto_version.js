@@ -60,10 +60,10 @@ function validateGithubWebhook(eventBody, signature, secret) {
       }
   
       // Verificar se e um evento de release
-      if (!body || body.action !== 'released' || !body.release || !body.repository) {
+      if (!body || body.action !== 'released' || !body.release || !body.repository || body.release.prerelease ) {
         return {
           statusCode: 400,
-          body: JSON.stringify({ error: 'Payload invalido. Nao e um evento de release.' })
+          body: JSON.stringify({ error: 'Payload invalido. Nao e um evento de release, válido' })
         };
       }
   
