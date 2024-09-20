@@ -78,7 +78,7 @@ function validateGithubWebhook(eventBody, signature, secret) {
   
       // Gravar ou atualizar os dados no Firestore
       await docRef.set({
-        version: version,
+        latest_version: version,
         releaseDate: releaseDate,
         releaseNotes: releaseNotes,
         timestamp: new Date().toISOString()
